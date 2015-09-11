@@ -107,6 +107,8 @@
     <Content Include="Views\StaticPages\Home.cshtml" />
     <Content Include="Views\StaticPages\Help.cshtml" />
     <Content Include="Views\StaticPages\About.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
