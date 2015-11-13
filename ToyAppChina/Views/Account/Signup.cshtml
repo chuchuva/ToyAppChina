@@ -1,0 +1,23 @@
+﻿@model ToyAppChina.Models.SignupViewModel
+
+@{
+  ViewBag.Title = "Sign up";
+}
+<h1>Sign up</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    @using (Html.BeginForm())
+    {
+      <label>Name</label>
+      @Html.TextBoxFor(m => m.FullName, new { @class = "form-control" })
+
+      @Html.LabelFor(m => m.Email)
+      @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+
+      @Html.LabelFor(m => m.Password)
+      @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+
+      <input type="submit" value="Create my account" class="btn btn-primary" />
+    }
+  </div>
+</div>
