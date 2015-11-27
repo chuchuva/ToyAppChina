@@ -32,14 +32,5 @@ namespace ToyAppChina.Controllers
         {
             return View();
         }
-
-        [Route("debug-connection-string-hjkdfh484323rf")]
-        public ActionResult DebugConnectionStringDontForgetToDelete()
-        {
-            var connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"];
-            return Content((connectionString != null ? connectionString.ConnectionString : "null :(") +
-                System.Configuration.ConfigurationManager.AppSettings["SQLSERVER_URI"]);
-        }
-
     }
 }
