@@ -8,6 +8,8 @@
   <div class="col-md-6 col-md-offset-3">
     @using (Html.BeginForm())
     {
+      @Html.ValidationSummary("", new { @class = "text-danger" })
+
       <label>Name</label>
       @Html.TextBoxFor(m => m.FullName, new { @class = "form-control" })
 

@@ -21,16 +21,32 @@ namespace ToyAppChina.Controllers
         [Route("account/signup")]
         public async Task<ActionResult> Signup(SignupViewModel model)
         {
-            var user = new ApplicationUser
+            if (ModelState.IsValid)
             {
-                UserName = model.Email,
-                Email = model.Email,
-                FullName = model.FullName
-            };
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    FullName = model.FullName
+                };
 
-            var userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            var result = await userManager.CreateAsync(user, model.Password);
-            return Json(result);
+                var userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                var result = await userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    return Json(result);
+                }
+                else
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error);
+                    }
+                }
+            }
+
+            // If we reach this point, something failed, redisplay the form
+            return View();
         }
     }
 }
